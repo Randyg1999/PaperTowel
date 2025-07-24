@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTowels - Handmade Reusable Paper Towels</title>
+    <meta name="description" content="Handmade reusable paper towels that are eco-friendly, washable, and wrapped just like traditional paper towels. Reduce waste, save money!">
+    
+    <style>
+        /* ==== EASY UPDATE SECTION: Colors and Fonts ==== */
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #8bc34a;
+            --accent-color: #ff6b35;
+            --text-color: #333;
+            --light-bg: #f8f9f5;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--secondary-color) 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e55a2b;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            text-align: center;
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+        }
+
+        .products h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-bg);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background-color: var(--light-bg);
+        }
+
+        .contact h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <nav class="container">
+            <div class="logo">EcoTowels</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <!-- ==== EASY UPDATE: Change main headline here ==== -->
+            <h1>Eco-Friendly Reusable Paper Towels</h1>
+            <!-- ==== EASY UPDATE: Change main description here ==== -->
+            <p>Handmade, washable towels that work just like paper towels but last for years. Save money and help the environment with every use!</p>
+            <a href="#contact" class="cta-button">Order Now</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <!-- ==== EASY UPDATE: Change about content here ==== -->
+                    <h2>Why Choose EcoTowels?</h2>
+                    <p>Our reusable paper towels are lovingly handmade and designed to replace traditional paper towels completely. Each roll is sewn with care and wrapped around a tube just like the paper towels you're used to.</p>
+                    <p>Made from high-quality, absorbent fabric, they can be washed hundreds of times while maintaining their effectiveness. Perfect for cleaning spills, wiping surfaces, and any task you'd normally use paper towels for.</p>
+                    <p>Join thousands of families who have made the switch to a more sustainable, cost-effective cleaning solution!</p>
+                </div>
+                <div class="about-image">
+                    <!-- ==== EASY UPDATE: Replace with actual product image ==== -->
+                    <p style="font-size: 1.2rem; color: var(--text-color);">
+                        [Product Image Here]<br>
+                        Recommended size: 400x300px
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <!-- ==== EASY UPDATE: Change section title here ==== -->
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <!-- ==== EASY UPDATE: Modify products here ==== -->
+                <div class="product-card">
+                    <div class="product-image">
+                        [Standard Roll Image]<br>
+                        200x200px recommended
+                    </div>
+                    <h3>Standard Roll</h3>
+                    <p>12 reusable towels per roll. Perfect for everyday cleaning and spills.</p>
+                    <div class="price">$25.00</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        [Large Roll Image]<br>
+                        200x200px recommended
+                    </div>
+                    <h3>Large Roll</h3>
+                    <p>20 reusable towels per roll. Great for bigger families or commercial use.</p>
+                    <div class="price">$40.00</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        [Bundle Image]<br>
+                        200x200px recommended
+                    </div>
+                    <h3>Family Bundle</h3>
+                    <p>3 standard rolls + 1 large roll. Save money with our family package!</p>
+                    <div class="price">$95.00</div>
+                    <a href="#contact" class="cta-button">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Use Like Normal</h3>
+                    <p>Tear off a towel just like you would with regular paper towels. Use for cleaning, spills, or any household task.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Toss in Hamper</h3>
+                    <p>When dirty, simply throw the used towel in your laundry hamper. No need for special storage.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Wash & Reuse</h3>
+                    <p>Wash with your regular laundry using any detergent. Air dry or tumble dry low. Use again and again!</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Save Money</h3>
+                    <p>Each towel can be washed hundreds of times. Replace your paper towel habit and save thousands!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact & Order</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Place Your Order</h3>
+                    <!-- ==== EASY UPDATE: Change form action to your email processor ==== -->
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="product">Product Interest:</label>
+                            <select id="product" name="product" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                                <option value="standard">Standard Roll ($25)</option>
+                                <option value="large">Large Roll ($40)</option>
+                                <option value="bundle">Family Bundle ($95)</option>
+                                <option value="custom">Custom Order</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message or Special Requests:</label>
+                            <textarea id="message" name="message" placeholder="Any special requests, color preferences, or questions?"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Order Request</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <!-- ==== EASY UPDATE: Change contact information here ==== -->
+                    <h3>Get In Touch</h3>
+                    <p><strong>Email:</strong> orders@ecotowels.com</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Text:</strong> (555) 123-4567</p>
+                    
+                    <h3>Care Instructions</h3>
+                    <ul style="list-style-type: disc; margin-left: 20px;">
+                        <li>Machine wash warm or cold</li>
+                        <li>Use any regular laundry detergent</li>
+                        <li>Air dry or tumble dry on low</li>
+                        <li>No fabric softener needed</li>
+                        <li>Can be bleached if needed</li>
+                    </ul>
+
+                    <h3>Why Customers Love Us</h3>
+                    <!-- ==== EASY UPDATE: Add real testimonials here ==== -->
+                    <blockquote style="font-style: italic; margin: 1rem 0; padding: 1rem; background-color: var(--white); border-left: 4px solid var(--secondary-color);">
+                        "I haven't bought paper towels in over a year! These are amazing and so well-made." - Sarah M.
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <!-- ==== EASY UPDATE: Change business information here ==== -->
+            <p>&copy; 2025 EcoTowels. Handmade with love for a sustainable future.</p>
+            <div class="social-links">
+                <!-- ==== EASY UPDATE: Add real social media links here ==== -->
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">Email</a>
+            </div>
+            <p>Made with care in [Your Location] | Free shipping on orders over $50</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        // ==== EASY UPDATE: Connect this to your email service ==== 
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your order request! We will contact you within 24 hours.');
+            // In real implementation, this would send the form data to your email processor
+        });
+
+        // Simple loading animation for images (when real images are added)
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('EcoTowels website loaded successfully!');
+        });
+    </script>
+</body>
+</html>
